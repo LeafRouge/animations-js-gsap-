@@ -3,8 +3,8 @@
 Autor: Tiphaine Boulineau
 Experimenting with gsap
 
-preview:
 ![](https://imgur.com/XFNVrVn)
+![](eoe-gsap.gif)
 
 ## Project setup
 ```
