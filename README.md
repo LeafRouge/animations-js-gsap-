@@ -4,7 +4,7 @@ Autor: Tiphaine Boulineau
 Experimenting with gsap
 
 preview:
-![alt text](eoe-gsap.gif)
+![](https://imgur.com/XFNVrVn)
 
 ## Project setup
 ```
