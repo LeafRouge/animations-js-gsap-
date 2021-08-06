@@ -1,58 +1,291 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+   <div class="container-bg">
+    <div class="in-progress">
+      <img class="img-ip" src="../assets/images/nge.gif">
+      <h1 style="font-size:10vw;">Sorry !</h1>
+      <p style="font-size:5vw;">Tiph is still working on the responsive and adding a couple of improvements</p>
+      <p style="font-size:5vw;">Check it on desktop or wait for the update :)</p>
+    </div>
+  <div class="bg">
+    <article>
+      <main>
+        <div id="rain-container"></div>
+
+<!--         <kinesis-container>
+          <kinesis-element :strength="30">
+            <div class="layer8 child">
+              <img class="img-anime" src="../assets/images/parallax8.png" alt="" >  
+            </div>
+          </kinesis-element>
+
+          <kinesis-element :strength="30" type="rotate">
+            <div class="layer9 child">
+              <img class="img-anime" src="../assets/images/parallax9.png" alt="" >  
+            </div>
+          </kinesis-element>
+        </kinesis-container> -->
+      </main>
+      <footer>
+
+
+        <div class="container_row parent">
+          <div class="layer1 child">
+            <img ref="l1image" class="l1image" src="../assets/images/parallax00.png" alt="" >  
+          </div>
+
+          <div class="layer5 child">
+            <img ref="l5image" class="l5image" src="../assets/images/parallax5'.png" alt="" >  
+          </div>
+
+          <div class="layer3 child">
+            <img class="img-anime" src="../assets/images/parallax3.png" alt="" >  
+          </div>
+
+          <div class="layer12 child">
+            <img ref="l12image" class="l12image" src="../assets/images/parallax12.png" alt="" >
+          </div>
+
+          <div class="layer11 child">
+            <img ref="l11image" class="l11image" src="../assets/images/parallax11.png" alt="" >  
+          </div>
+
+          <div class="layer4 child">
+            <img ref="l4image" class="l4image" src="../assets/images/parallax4'.png" alt="">  
+          </div>
+
+          <div class="layer10 child">
+            <img ref="l10image" class="l10image" src="../assets/images/parallax10.png" alt="" >  
+          </div>
+
+          <div class="layer2 child">
+            <img class="img-anime" src="../assets/images/parallax2'.png" alt="" >  
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  import { TimelineMax, TweenMax, Linear } from "gsap"
+// import { TimelineMax} from "gsap"
+export default { 
+
+  data() {
+    return {
+      timeline: null
+    };
+  },
+
+  mounted() {
+var l5image = '.l5image';
+var l4image = '.l4image';
+var l11image = '.l11image';
+var l12image = '.l12image';
+
+// Rocks moving
+new TimelineMax({ repeat: -1 })
+  .to(l4image, 4, { x: 10 })
+  .to(l4image, 4, { x: 0 })
+  // Rei's face
+new TimelineMax({ repeat: -1 })
+  .to(l5image, 4, { y: 50 })
+  .to(l5image, 4, { y: -15 })
+// thick fog
+  new TimelineMax({ repeat: -1 })
+  .to(l11image, 3.75, { x: 20 })
+  .to(l11image, 3.75, { x: 0 })
+  // large fog
+  new TimelineMax({ repeat: -1 })
+  .to(l12image, 3.70, { y: 20 })
+  .to(l12image, 3.70, { y: 0 })
+
+var dropletQuantity = 50;
+
+for (var i = dropletQuantity - 1; i >= 0; i--) {
+  
+  var pos = Math.floor((Math.random() * 100) + 1);
+  var delay = Math.random();
+  var speed = (Math.random() * 0.5) + 1.7;
+  
+  var droplet = document.createElement("div");
+  // droplet.className = "droplet";
+  droplet.classList.add("dropletclass");
+  droplet.style.position = "absolute";
+    droplet.style.zIndex = 2;
+  droplet.style.left = pos + "%";
+  droplet.style.top = 6 + "%";
+  droplet.style.height = 40 + "px";
+  droplet.style.width = 1 + "px";
+  droplet.style.opacity = 0.5;
+  // droplet.style.transform = "rotate(30deg)";
+  droplet.style.backgroundColor = "white";
+  droplet.style.zIndex = pos + "%";
+  
+  TweenMax.to(droplet, speed, { y :1520, delay : delay, repeat:-1,ease:Linear.easeNone});
+  
+  document.getElementById('rain-container').appendChild(droplet);
+}
+
   }
 }
+
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+
+.in-progress {
+  display: none;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.img-ip {
+  display: none;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+
+#rain-container {
+    z-index: 2;
+  position: absolute;
+  top: -50%;
+  left: -14%;
+  width: 1543px;
+  height: 1500px;
+  transform: rotate(30deg);
 }
-a {
-  color: #42b983;
+
+article {
+  height: 100vh;
+}
+
+.parent {
+    display: grid;
+    position: relative;
+
+}
+
+footer {
+  height: 425px;
+  position: fixed;
+  bottom: 0;
+}
+
+.child {
+  grid-area: 1 / 1 / 2 / 2;
+  height: 0;
+}
+
+.layer5 {
+  z-index: 3;
+}
+
+.layer3 {
+  z-index: 4;
+}
+
+.layer4 {
+  z-index: 12;
+}
+
+.layer1 {
+  z-index: 2;
+}
+
+.layer2 {
+  z-index: 11;
+}
+
+.layer11 {
+  z-index: 13;
+}
+
+.layer12 {
+  z-index: 14;
+}
+
+.layer8 {
+  z-index: 15;
+}
+
+.layer9 {
+  z-index: 16;
+}
+
+.bg {
+  background-image: url("../assets/images/backgroundsmall.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+img {
+  width: 100%;
+}
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+
+}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  footer {
+    height: 200px;
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+/* Larger than desktop */
+@media (max-width: 1024px) {
+.bg {
+    display: none;
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+  }
+
+  p {
+    color: white;
+    text-align: center;
+  }
+
+article {
+    display: none;
+  }
+
+.in-progress {
+  display: block;
+  background-color: black;
+}
+
+.img-ip {
+  display: block;
+}
+
+}
+
+
+/* Larger than desktop */
+@media (min-width: 1024px) {
+  footer {
+    height: 550px;
+    position: fixed;
+    bottom: 0;
+  }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+
 }
 </style>
