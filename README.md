@@ -1,5 +1,11 @@
 # animation
 
+Autor: Tiphaine Boulineau
+Experimenting with gsap
+
+preview:
+![alt text](https://imgur.com/XFNVrVn)
+
 ## Project setup
 ```
 npm install
